@@ -1,0 +1,21 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.cnt {
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+.cntnr {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-cntnr {
+  text-align: center;
+
+  .button {
+		margin: 20px;
+  }
+}

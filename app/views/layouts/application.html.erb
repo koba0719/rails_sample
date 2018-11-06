@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Twitter</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<header>
+<nav class="navbar is-info is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <p style="font-size: 25px;">Twitter</p>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <% if session[:id] %>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Home", "/", class: "navbar-item"%>
+
+      <%= link_to "Tweet", "/posts/new", class: "navbar-item"%>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "TweetList", "/posts/#{@current_user.id}/list", class: "navbar-item" %>
+          <%= link_to "UserList", "/user/list", class: "navbar-item" %>
+          <%= link_to "About", "https://twitter.com/?lang=ja", class: "navbar-item" %>
+
+          <hr class="navbar-divider">
+          <%= link_to "Github", "https://github.com/", class: "navbar-item" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="container_header">
+          <%= link_to @current_user.user_id, "/user/#{@current_user.id}/edit", class: "current_user_a"%>
+        </div>
+        <div class="buttons">
+          <%= link_to "Log out", "/user/logout", class: "button is-light" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% else %>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Home", "/user/login_form", class: "navbar-item"%>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "About", "https://twitter.com/?lang=ja", class: "navbar-item" %>
+          <hr class="navbar-divider">
+          <%= link_to "Github", "https://github.com/", class: "navbar-item" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Sign up", "/user/new", class: "button is-link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</nav>
+</header>
+
+
+<% if flash[:notice] %>
+  <div class="notification is-primary">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+  <%= yield %>
+</body>
+
+</html>

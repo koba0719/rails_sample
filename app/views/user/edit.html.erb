@@ -1,0 +1,40 @@
+<%= form_tag "/user/#{@user.id}/update" do%>
+<div class="card card-form">
+  <div class="card-content">
+    <div class="content">
+
+      <div class="field">
+        <label class="label">UserID</label>
+        <div class="control">
+          <input class="input" type="text" name="user_id" placeholder="UserID" value="<%=@user.user_id%>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">E-Mail</label>
+        <div class="control">
+          <input class="input" type="text" name="email" placeholder="E-Mail" value="<%=@user.email%>">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Passsword</label>
+        <div class="control">
+          <input class="input" type="password" name="password" placeholder="Password" value="<%= @user.password %>">
+        </div>
+      </div>
+
+      <div class="btn-cntnr-user">
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-light"><%= link_to "Cancel", "/" %></button>
+          </div>
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

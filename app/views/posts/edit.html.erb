@@ -1,0 +1,12 @@
+<%= form_tag "/posts/#{@post.id}/update" do %>
+<div class="cnt">
+  <textarea class="textarea" name="content" placeholder="e.g. Hello world"><%= @post.content %></textarea>
+  <div class="btn-cntnr">
+    <button class="button is-light"><%= link_to "Cancel", "/"%></button>
+    <%= link_to "/posts/#{@post.id}/destroy", method: :post do %>
+      <button class="button is-danger">Delete</button>
+    <% end %>
+    <button class="button is-link" type="submit">Update</button>
+  </div>
+</div>
+<% end %>
